@@ -49,6 +49,23 @@
             chart.y = d3.scale.linear()
                 .domain([25, d3.max(app.data, function (d) { return d.lifeExpectancy; })])
                 .range([height, 0]);
+
+            var xAxis = d3.svg.axis()
+                .scale(chart.x)
+                .orient('bottom');
+
+            var yAxis = d3.svg.axis()
+                .scale(chart.y)
+                .orient('left');
+
+            chart.svg.append('g')
+                .attr('class', 'x axis')
+                .attr('transform', 'translate(0,' + height + ')')
+                .call(xAxis);
+
+            chart.svg.append('g')
+                .attr('class', 'y axis')
+                .call(yAxis);
         },
 
         update: function (year) {
