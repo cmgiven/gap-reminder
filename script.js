@@ -66,6 +66,11 @@
             chart.svg.append('g')
                 .attr('class', 'y axis')
                 .call(yAxis);
+
+            chart.tooltip = chart.svg.append('text')
+                .attr('x', width)
+                .attr('y', 0)
+                .attr('class', 'tooltip');
         },
 
         update: function (year) {
@@ -77,7 +82,13 @@
                 .data(yearData, function (d) { return d.country; });
 
             countries.enter().append('circle')
-                .attr('class', function (d) { return 'country continent-' + d.continent.replace(' ', '-'); });
+                .attr('class', function (d) { return 'country continent-' + d.continent.replace(' ', '-'); })
+                .on('mouseover', function (d) {
+                    chart.tooltip.text(d.country);
+                })
+                .on('mouseout', function () {
+                    chart.tooltip.text('');
+                });
 
             countries
                 .attr('r', function (d) { return Math.sqrt(d.population) / 1000; })
