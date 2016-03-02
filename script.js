@@ -45,6 +45,9 @@
             countries.enter().append('circle')
                 .attr('class', 'country');
 
+            countries
+                .attr('r', function (d) { return Math.sqrt(d.population) / 1000; });
+
             countries.exit().remove();
         }
     };
