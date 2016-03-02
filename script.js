@@ -28,10 +28,19 @@
             var width = 600;
             var height = 400;
 
+            var margin = {
+                top: 15, right: 15, bottom: 30, left: 30
+            };
+
             chart.svg = d3.select('#scatterplot')
                 .append('svg')
                 .attr('width', width)
-                .attr('height', height);
+                .attr('height', height)
+                .append('g')
+                .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+            width = width - margin.left - margin.right;
+            height = height - margin.top - margin.bottom;
 
             chart.x = d3.scale.linear()
                 .domain([0, d3.max(app.data, function (d) { return d.fertility; })])
