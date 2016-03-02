@@ -36,6 +36,16 @@
 
         update: function (year) {
             var chart = this;
+
+            var yearData = app.data.filter(function (d) { return d.year === year; });
+
+            var countries = chart.svg.selectAll('.country')
+                .data(yearData, function (d) { return d.country; });
+
+            countries.enter().append('circle')
+                .attr('class', 'country');
+
+            countries.exit().remove();
         }
     };
 
