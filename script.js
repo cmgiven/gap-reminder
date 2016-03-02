@@ -32,6 +32,14 @@
                 .append('svg')
                 .attr('width', width)
                 .attr('height', height);
+
+            chart.x = d3.scale.linear()
+                .domain([0, d3.max(app.data, function (d) { return d.fertility; })])
+                .range([0, width]);
+
+            chart.y = d3.scale.linear()
+                .domain([25, d3.max(app.data, function (d) { return d.lifeExpectancy; })])
+                .range([height, 0]);
         },
 
         update: function (year) {
@@ -46,7 +54,9 @@
                 .attr('class', 'country');
 
             countries
-                .attr('r', function (d) { return Math.sqrt(d.population) / 1000; });
+                .attr('r', function (d) { return Math.sqrt(d.population) / 1000; })
+                .attr('cx', function (d) { return chart.x(d.fertility); })
+                .attr('cy', function (d) { return chart.y(d.lifeExpectancy); });
 
             countries.exit().remove();
         }
