@@ -24,6 +24,14 @@
     Scatterplot.prototype = {
         setup: function () {
             var chart = this;
+
+            var width = 600;
+            var height = 400;
+
+            chart.svg = d3.select('#scatterplot')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
         },
 
         update: function (year) {
