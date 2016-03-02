@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gap Re-Minder</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="loading">
+      <h1>Loading
+        <div class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+      </h1>
+      <p>There are a lot of countries in the world. How many? <a href="https://www.youtube.com/watch?v=4AivEQmfPpk" target="_blank">Tough to say.</a></p>
+    </div>
+
+    <div id="main">
+      <header>
+        <h1>Gap Re-Minder</h1>
+      </header>
+      <div id="controls">
+        <button id="animate" class="play-button paused">Play</button>
+        <div id="year"><span id="year-label"></span></div>
+      </div>
+      <div class="exhibit" id="scatterplot"></div>
+      <div id="description">
+        <p></p>
+      </div>
+      <div id="notes">
+        <p><strong>Source:</strong> <a href="http://www.gapminder.org/data/" target="_blank">Gapminder</a></p>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
+
+    <script>
+      // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+      // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+      // requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
+      // MIT license
+
+      (function() {
+        var lastTime = 0;
+        var vendors = ['ms', 'moz', 'webkit', 'o'];
+        for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+          window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+          window.cancelAnimationFrame  = window[vendors[x]+'CancelAnimationFrame'] ||
+                                         window[vendors[x]+'CancelRequestAnimationFrame'];
+        }
+
+        if (!window.requestAnimationFrame) {
+          window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); }, timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+          };
+        }
+
+        if (!window.cancelAnimationFrame) {
+          window.cancelAnimationFrame = function(id) { clearTimeout(id); };
+        }
+      }());
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

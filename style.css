@@ -1,0 +1,259 @@
+.axis path {
+    fill: none;
+}
+.axis line {
+    stroke: #ddd;
+}
+.axis text {
+    fill: #fff;
+    font-size: 11px;
+    font-weight: 300;
+}
+
+.tooltip {
+    fill: #ddd;
+    text-anchor: end;
+}
+
+.country {
+    opacity: .75;
+    stroke: rgb(229,196,148);
+    fill: rgba(229,196,148,.5);
+}
+
+.country:hover {
+    opacity: 1;
+}
+
+.continent-Africa {
+    stroke: rgb(102,194,165);
+    fill: rgba(102,194,165,.5);
+}
+
+.continent-Asia {
+    stroke: rgb(252,141,98);
+    fill: rgba(252,141,98,.5);
+}
+
+.continent-Australia {
+    stroke: rgb(141,160,203);
+    fill: rgba(141,160,203,.5);
+}
+
+.continent-Europe {
+    stroke: rgb(231,138,195);
+    fill: rgba(231,138,195,.5);
+}
+
+.continent-North-America {
+    stroke: rgb(166,216,84);
+    fill: rgba(166,216,84,.5);
+}
+
+.continent-South-America {
+    stroke: rgb(255,217,47);
+    fill: rgba(255,217,47,.5);
+}
+
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    background: #161616;
+    color: #ddd;
+    font-family: 'Lato', Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.5em;
+}
+
+button {
+    font-family: inherit;
+}
+
+a {
+    color: inherit;
+}
+
+h1, h2, h3 {
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 42px;
+    letter-spacing: 5px;
+    line-height: 1.1em
+}
+
+strong {
+    font-weight: 900;
+}
+
+#loading {
+    position: absolute;
+    left: 33.33%; top: 50%;
+    margin: -125px 0 0 -107px;
+    width: 320px; height: 250px;
+    padding: 0 15px;
+    text-align: left;
+}
+
+#main {
+    position: relative;
+    padding-bottom: 92px;
+    display: none;
+}
+
+#description {
+    clear: both;
+}
+
+#notes {
+    position: absolute;
+    bottom: 0;
+    font-size: 12px;
+    line-height: 1.2em;
+    padding: 0 30px;
+    color: #999;
+    a { text-decoration: underline; }
+}
+
+header {
+    text-align: center;
+}
+
+#controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+#controls > div {
+    display: inline-block;
+    padding: 7px 5px 3px 15px;
+    margin: 5px 5px;
+}
+
+.play-button {
+    position: relative;
+    top: -2px;
+    width: 44px;
+    height: 44px;
+    margin: 0 4px;
+    border: 4px solid #999;
+    border-radius: 44px;
+    background: none;
+    overflow: hidden;
+    text-indent: 44px;
+    transition: border-color 250ms ease;
+}
+
+.play-button:hover {
+    border-color: #ccc;
+}
+
+.play-button.disabled {
+    border-color: #333;
+}
+
+.play-button.paused:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0; height: 0;
+    top: 10px;
+    left: 14px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 12px solid #999;
+    transition: border-color 250ms ease;
+}
+
+.play-button.paused:hover:before {
+    border-left-color: #ccc;
+}
+
+.play-button.paused.disabled:before {
+    border-left-color: #333;
+}
+
+.play-button.playing:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 12px; height: 14px;
+    top: 11px;
+    left: 12px;
+    border-right: 4px solid #999;
+    border-left: 4px solid #999;
+    transition: border-color 250ms ease;
+}
+
+.play-button.playing:hover:after {
+    border-color: #ccc;
+}
+
+.exhibit svg {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Modified version of SpinKit */
+/* https://github.com/tobiasahlin/SpinKit */
+/* Copyright (c) 2014 Tobias Ahlin */
+/* MIT license */
+
+.spinner {
+    display: inline-block;
+    height: 30px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.spinner > div {
+    background-color: #ddd;
+    height: 100%;
+    width: 3px;
+    display: inline-block;
+    border-radius: 3px;
+
+    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+    animation: stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+@-webkit-keyframes stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+    20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes stretchdelay {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }    20% {
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+    }
+}
