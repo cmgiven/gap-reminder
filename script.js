@@ -90,7 +90,7 @@
                     chart.tooltip.text('');
                 });
 
-            countries
+            countries.transition().duration(TRANSITION_DURATION)
                 .attr('r', function (d) { return Math.sqrt(d.population) / 1000; })
                 .attr('cx', function (d) { return chart.x(d.fertility); })
                 .attr('cy', function (d) { return chart.y(d.lifeExpectancy); });
