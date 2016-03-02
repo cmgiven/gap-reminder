@@ -51,7 +51,7 @@
                 .data(yearData, function (d) { return d.country; });
 
             countries.enter().append('circle')
-                .attr('class', 'country');
+                .attr('class', function (d) { return 'country continent-' + d.continent.replace(' ', '-'); });
 
             countries
                 .attr('r', function (d) { return Math.sqrt(d.population) / 1000; })
