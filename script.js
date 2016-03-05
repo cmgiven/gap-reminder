@@ -99,7 +99,7 @@
         }
     };
 
-    // Controls has two responsibilites in our simple app: it watches and updates the play/pause
+    // Controls has two responsibilities in our simple app: it watches and updates the play/pause
     // button, and it updates the year label. In a more complex app, there could be many more
     // filters and options.
     Controls = function (el) {
